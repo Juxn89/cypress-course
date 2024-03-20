@@ -1,0 +1,17 @@
+{
+  "name": "cypress-intro",
+  "version": "1.0.0",
+  "description": "Curso de Automatización de Pruebas UI con Cypress de Platzi",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "keywords": [],
+  "author": "Juan Gomez",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "13.7.0",
+    "eslint": "8.57.0",
+    "prettier": "3.2.5"
+  }
+}
