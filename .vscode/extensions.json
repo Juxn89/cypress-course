@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        
+        "andrew-codes.cypress-snippets",
+        "shevtsov.vscode-cy-helper"
     ]
 }
