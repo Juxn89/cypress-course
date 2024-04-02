@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 describe('Types of locators', () => {
 	Cypress.once('uncaught:exception', (err, runnable) => false);
 
