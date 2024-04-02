@@ -15,8 +15,15 @@ describe('Saving elements', () => {
 			expect(divs.length).to.eq(70)
 			expect(labels.length).to.eq(16)
 
+			// DEBUG
+			cy.task('log', inputs.length)
+			cy.log(`I'm the length ${inputs.length}`)
+			cy.pause()
 		})
-
+		
 		cy.get('form').find('label')
+		cy.debug()
+
+		cy.get('input[placeholder="First Name"]').then(console.log)
 	})
 })
