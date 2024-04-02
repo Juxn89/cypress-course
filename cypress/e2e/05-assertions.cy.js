@@ -1,8 +1,19 @@
 describe('Assertions', () => {
 	Cypress.once('uncaught:exception', (err, runnable) => false)
 
-	it('Assertion #1', () => {
+	before(() => {
 		cy.visit('/automation-practice-form')
+	})
+	
+	beforeEach(() => {
+		// cy.visit('/automation-practice-form')
+	})
+
+	after(() => {
+		cy.visit('/')
+	})
+
+	it('Assertion #1', () => {
 		cy.url().should('include', 'demoqa.com')
 		cy.get('#firstName').should('be.visible').and('have.attr', 'placeholder', 'First Name')
 	})
@@ -15,7 +26,7 @@ describe('Assertions', () => {
 		})
 	})
 
-	it('Assertion #3', () => {
+	it.only('Assertion #3', () => {
 		cy.url().should('include', 'demoqa.com')
 		cy.get('#firstName').then( (element) => {
 			assert.equal(element.attr('placeholder'), 'First Name')
