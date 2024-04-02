@@ -1,5 +1,5 @@
 describe('Saving elements', () => {
-	Cypress.once('uncaught:exception', (err, runnable) => false);
+	Cypress.once('uncaught:exception', (err, runnable) => false)
 
 	it('Repetition', () => {
 		cy.visit('/automation-practice-form')
