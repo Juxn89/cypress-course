@@ -4,7 +4,11 @@
   "description": "Curso de Automatización de Pruebas UI con Cypress de Platzi",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test:headless:chrome:firstTest": "cypress run --browser chrome --spec cypress/e2e/01-firstTest.cy.js",
+    "test:headless:chrome": "cypress run --browser chrome",
+    "test:headless:firefox": "cypress run --browser firefox",
+    "test:headless": "cypress run",
+    "test:ui": "cypress open"
   },
   "keywords": [],
   "author": "Juan Gomez",
