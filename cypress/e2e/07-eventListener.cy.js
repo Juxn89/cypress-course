@@ -40,7 +40,7 @@ describe('Event listener in elements', () => {
 		cy.get('#firstName').clear()
 	})	
 	
-	it.only('Checkbox and radio buttons', () => {
+	it('Checkbox and radio buttons', () => {
 		cy.visit('/automation-practice-form')
 		// cy.get('#gender-radio-1').click({ force: true })
 		// cy.get('#gender-radio-1').check({ force: true })
@@ -52,5 +52,23 @@ describe('Event listener in elements', () => {
 		// cy.get('#hobbies-checkbox-1').uncheck({ force: true})
 
 		cy.get('label[for="hobbies-checkbox-1"]').click()
-	})
+	})	
+	
+	it.only('Get information from inputs', function() {
+		cy.visit('/automation-practice-form')
+
+		cy.get('#firstName').as('firstName')
+		cy.get('@firstName').type('Juan')
+		cy.get('@firstName').then((firstName) => {
+			expect(firstName.val()).to.equal('Juan')
+		})
+
+		cy.get('@firstName').invoke('val').should('equal', 'Juan')
+		cy.get('@firstName').invoke('val').as('globalFirstName')
+	})	
+	
+	it.only('Share information', function() {
+		cy.get('#lastName').as('lastName')
+		cy.get('@lastName').type(this.globalFirstName)
+	})		
 })
