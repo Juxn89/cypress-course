@@ -89,7 +89,7 @@ describe('Event listener in elements', () => {
 			.click()
 	})
 
-	it.only('Working with tables', () => {
+	it('Working with tables', () => {
 		cy.visit('https://www.w3schools.com/html/html_tables.asp')
 		cy.get('#customers').find('th').each(element => {
 			cy.log(element.text())
@@ -124,5 +124,14 @@ describe('Event listener in elements', () => {
 			.eq(1)
 			.invoke('text')
 			.should('equal', 'Francisco Chang')
+	})
+
+	it.only('Working with Date Pickers', () => {
+		cy.visit('https://material.angular.io/components/datepicker/overview')
+		cy.get('#mat-input-0').type('01/01/2024', { force: true })
+
+		cy.get('datepicker-overview-example')
+			.find('button')
+			.click()
 	})
 })
