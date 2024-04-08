@@ -80,12 +80,49 @@ describe('Event listener in elements', () => {
 
 	})
 
-	it.only('Working with dropdown/select elements - dynamic', () => {
+	it('Working with dropdown/select elements - dynamic', () => {
 		cy.visit('https://react-select.com/home')
 		cy.get('#react-select-6-input').type(' ')
 		cy.get('#react-select-6-listbox')
 			.children()
 			.contains('Red')
 			.click()
-	})	
+	})
+
+	it.only('Working with tables', () => {
+		cy.visit('https://www.w3schools.com/html/html_tables.asp')
+		cy.get('#customers').find('th').each(element => {
+			cy.log(element.text())
+		})
+
+		cy.get('#customers')
+			.find('th')
+			.first()
+			.invoke('text')
+			.should('equal', 'Company')
+
+		cy.get('#customers')
+			.find('th')
+			.eq(1) // Column index
+			.invoke('text')
+			.should('equal', 'Contact')
+
+		cy.get('#customers')
+			.find('th')
+			.eq(2)
+			.invoke('text')
+			.should('equal', 'Country')
+
+		cy.get('#customers')
+			.find('tr')
+			.should('have.length', 7)
+
+		cy.get('#customers')
+			.find('tr')
+			.eq(2)
+			.find('td')
+			.eq(1)
+			.invoke('text')
+			.should('equal', 'Francisco Chang')
+	})
 })
