@@ -54,7 +54,7 @@ describe('Event listener in elements', () => {
 		cy.get('label[for="hobbies-checkbox-1"]').click()
 	})	
 	
-	it.only('Get information from inputs', function() {
+	it('Get information from inputs', function() {
 		cy.visit('/automation-practice-form')
 
 		cy.get('#firstName').as('firstName')
@@ -67,8 +67,25 @@ describe('Event listener in elements', () => {
 		cy.get('@firstName').invoke('val').as('globalFirstName')
 	})	
 	
-	it.only('Share information', function() {
+	it('Share information', function() {
 		cy.get('#lastName').as('lastName')
 		cy.get('@lastName').type(this.globalFirstName)
-	})		
+	})
+	
+	it('Working with dropdown/select elements', () => {
+		cy.visit('https://ultimateqa.com/simple-html-elements-for-automation/')
+		cy.get('select').select(2) // Select by index
+		cy.get('select').select('audi').should('have.value', 'audi') // Select by value
+		cy.get('select').select('Saab').should('have.value', 'saab') // Select by text
+
+	})
+
+	it.only('Working with dropdown/select elements - dynamic', () => {
+		cy.visit('https://react-select.com/home')
+		cy.get('#react-select-6-input').type(' ')
+		cy.get('#react-select-6-listbox')
+			.children()
+			.contains('Red')
+			.click()
+	})	
 })
