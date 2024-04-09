@@ -1,7 +1,7 @@
 {
-  "name": "cypress-intro",
+  "name": "cypress-advanced",
   "version": "1.0.0",
-  "description": "Curso de Automatización de Pruebas UI con Cypress de Platzi",
+  "description": "Curso de Automatización de Pruebas UI con Cypress Avanzado de Platzi",
   "main": "index.js",
   "scripts": {
     "test:headless:chrome:firstTest": "cypress run --browser chrome --spec cypress/e2e/01-firstTest.cy.js",
@@ -14,8 +14,8 @@
   "author": "Juan Gomez",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "13.7.0",
-    "eslint": "8.57.0",
+    "cypress": "13.7.2",
+    "eslint": "9.0.0",
     "prettier": "3.2.5"
   }
 }
