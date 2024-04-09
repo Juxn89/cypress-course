@@ -126,12 +126,53 @@ describe('Event listener in elements', () => {
 			.should('equal', 'Francisco Chang')
 	})
 
-	it.only('Working with Date Pickers', () => {
+	it('Working with Date Pickers', () => {
 		cy.visit('https://material.angular.io/components/datepicker/overview')
 		cy.get('#mat-input-0').type('01/01/2024', { force: true })
 
 		cy.get('datepicker-overview-example')
 			.find('button')
 			.click()
+	})
+
+	it('Working with modals or pop-up', () => {
+		cy.visit('/modal-dialogs')
+		cy.get('#showSmallModal').click()
+		cy.get('#closeSmallModal').click()
+	})
+
+	it('Working with alerts #1', () => {
+		cy.visit('/alerts')
+		
+		const stub = cy.stub()
+		cy.on('window:confirm', stub)
+		cy.get('#confirmButton').click().then(() => {
+			expect(stub.getCall(0)).to.be.calledWith('Do you confirm action?')
+		})
+		cy.contains('You selected Ok').should('exist')
+	})
+
+	it('Working with alerts #2', () => {
+		cy.get('#confirmButton').click()
+		cy.on('window:confirm', (confirm) => {
+			expect(confirm).to.equal('Do you confirm action?')
+		})
+	})
+
+	it('Working with alerts #3 - Reject/Cancel alerts', () => {
+		cy.get('#confirmButton').click()
+		cy.on('window:confirm', (confirm) => {
+			expect(confirm).to.equal('Do you confirm action?')
+			return false
+		})
+		cy.contains('You selected Cancel').should('exist')
+	})
+
+	it.only('Working with tooltip', () => {
+		cy.visit('/tool-tips')
+		cy.get('#toolTipButton').trigger('mouseover')
+		cy.contains('You hovered over the Button').should('exist')
+		cy.get('#toolTipButton').trigger('mouseout')
+		cy.contains('You hovered over the Button').should('not.exist')
 	})
 })
