@@ -1,9 +1,9 @@
 # Cypress
 Curso de **Automatización de Pruebas UI** con ```Cypress``` de ```Platzi```
 
-## Comandos
+## Commands
 ### Types
-Lista de algunos comandos para usar con el type:
+List of commands used with **type**:
 ```
 	{backspace} Borra el personaje a la izquierda del cursor.
 	{del} Borra el personaje a la derecha del cursor.
@@ -22,3 +22,6 @@ Lista de algunos comandos para usar con el type:
 	{selectall} Selecciona todo el texto creando un selection range.
 	{uparrow}	Mueve el cursor hacia arriba.
 ```
+
+## References
+- [What’s New in Cypress 12](https://applitools.com/blog/whats-new-in-cypress-12/)
