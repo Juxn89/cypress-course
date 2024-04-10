@@ -4,8 +4,8 @@
   "description": "Curso de Automatización de Pruebas UI con Cypress Avanzado de Platzi",
   "main": "index.js",
   "scripts": {
-		"eslint:fix": "eslint . --fix",
-		"eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "eslint": "eslint .",
     "test:headless:chrome:firstTest": "cypress run --browser chrome --spec cypress/e2e/01-firstTest.cy.js",
     "test:headless:chrome": "cypress run --browser chrome",
     "test:headless:firefox": "cypress run --browser firefox",
@@ -17,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "cypress": "13.7.2",
+    "cypress-xpath": "2.0.1",
     "eslint": "9.0.0",
     "eslint-plugin-cypress": "2.15.1",
     "prettier": "3.2.5"
