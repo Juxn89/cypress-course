@@ -23,3 +23,29 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (email, password) => {
+	const userInput = "#user_login";
+	const passwordInput = "#user_password";
+	const loginButton = "#login_form > div.form-actions > input";
+
+	cy.visit("http://zero.webappsecurity.com/login.html");
+
+	cy.get(userInput).type(email)
+	cy.get(passwordInput).type(password, { sensitive: true })
+	cy.get(loginButton).click()
+})
+
+Cypress.Commands.overwrite('type', (originalFunction, element, text, options) => {
+	if(options && options.sensitive) {
+		options.log = false
+
+		Cypress.log({
+			element,
+			name: 'type',
+			message: '*'.repeat(text.length)
+		})
+	}
+
+	return originalFunction(element, text, options)
+})
