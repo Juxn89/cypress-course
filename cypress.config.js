@@ -12,6 +12,7 @@ module.exports = defineConfig({
 		},
 		setupNodeEvents(on, config) {
 			// implement node event listeners here
+			config.env.variable_env= process.env.NODE_ENV ?? 'NO ENVIROMENT VARIABLES SETTED'
 		},
 	},
 })

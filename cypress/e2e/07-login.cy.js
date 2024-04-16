@@ -34,7 +34,7 @@ describe('Login with POM', () => {
 		loginPage.validateSuccessLogin()
 	})
 
-	it.only('Wrong login from terminal', () => {
+	it('Wrong login from terminal', () => {
 		loginPage.validateLoginPage()
 		cy.log(Cypress.env())
 
@@ -42,5 +42,20 @@ describe('Login with POM', () => {
 
 		loginPage.login(user, password)
 		loginPage.validateSuccessLogin()
+	})
+})
+
+describe.only('Wrong login with configuration', { env: { wrongUser: 'aaa', wrongPassword: 'bbb' } }, () => {
+	beforeEach(() => {
+		loginPage.visit()
+	})
+
+	it('Wrong login', () => {
+		loginPage.validateLoginPage()
+		cy.log(Cypress.env())
+
+		const { wrongUser, wrongPassword } = Cypress.env()
+		loginPage.login(wrongUser, wrongPassword)
+		loginPage.validateErrorLogin()
 	})
 })

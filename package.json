@@ -11,7 +11,9 @@
     "test:headless:firefox": "cypress run --browser firefox",
     "test:headless": "cypress run",
     "test:ui": "cypress open",
-		"variable.env": "cypress open --env VARIABLE_NAME=my-value"
+		"variable:env": "cypress open --env VARIABLE_NAME=my-value",
+		"variable:env:unix": "export NODE_ENV=DEVELOPMENT_VARIABLE && cypress open",
+		"variable:env:windows": "set NODE_ENV=DEVELOPMENT_VARIABLE && cypress open"
   },
   "keywords": [],
   "author": "Juan Gomez",
