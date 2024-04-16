@@ -33,7 +33,7 @@ Cypress.Commands.add('login', (email, password) => {
 
 	cy.get(userInput).type(email)
 	cy.get(passwordInput).type(password, { sensitive: true })
-	cy.get(loginButton).click()
+	cy.get(loginButton).click({ force: true })
 })
 
 Cypress.Commands.overwrite('type', (originalFunction, element, text, options) => {

@@ -10,7 +10,8 @@
     "test:headless:chrome": "cypress run --browser chrome",
     "test:headless:firefox": "cypress run --browser firefox",
     "test:headless": "cypress run",
-    "test:ui": "cypress open"
+    "test:ui": "cypress open",
+		"variable.env": "cypress open --env VARIABLE_NAME=my-value"
   },
   "keywords": [],
   "author": "Juan Gomez",
