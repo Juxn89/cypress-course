@@ -11,15 +11,17 @@
     "test:headless:firefox": "cypress run --browser firefox",
     "test:headless": "cypress run",
     "test:ui": "cypress open",
-		"variable:env": "cypress open --env VARIABLE_NAME=my-value",
-		"variable:env:unix": "export NODE_ENV=DEVELOPMENT_VARIABLE && cypress open",
-		"variable:env:windows": "set NODE_ENV=DEVELOPMENT_VARIABLE && cypress open"
+    "test:update:snapshot": "cypress open --env= updateSnapshots=true",
+    "variable:env:unix": "export NODE_ENV=DEVELOPMENT_VARIABLE && cypress open",
+    "variable:env:windows": "set NODE_ENV=DEVELOPMENT_VARIABLE && cypress open",
+    "variable:env": "cypress open --env VARIABLE_NAME=my-value"
   },
   "keywords": [],
   "author": "Juan Gomez",
   "license": "MIT",
   "devDependencies": {
     "cypress": "13.7.2",
+    "cypress-image-snapshot": "4.0.1",
     "cypress-xpath": "2.0.1",
     "eslint": "9.0.0",
     "eslint-plugin-cypress": "2.15.1",
