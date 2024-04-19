@@ -45,7 +45,7 @@ describe('Login with POM', () => {
 	})
 })
 
-describe.only('Wrong login with configuration', { env: { wrongUser: 'aaa', wrongPassword: 'bbb' } }, () => {
+describe('Wrong login with configuration', { env: { wrongUser: 'aaa', wrongPassword: 'bbb' } }, () => {
 	beforeEach(() => {
 		loginPage.visit()
 	})
@@ -57,5 +57,57 @@ describe.only('Wrong login with configuration', { env: { wrongUser: 'aaa', wrong
 		const { wrongUser, wrongPassword } = Cypress.env()
 		loginPage.login(wrongUser, wrongPassword)
 		loginPage.validateErrorLogin()
+	})
+})
+
+describe('Login with fixture', () => {
+	beforeEach(() => {
+		loginPage.visit()
+	})
+
+	it('Wrong login', () => {
+		loginPage.validateLoginPage()
+		cy.fixture("credentials").then(credentials => {
+			const { email, password } = credentials
+			loginPage.login(email, password)
+		})
+
+		loginPage.validateErrorLogin()
+	})
+
+	it('Success login', () => {
+		loginPage.validateLoginPage()
+		cy.fixture('users').then(credentials => {			
+			const { email, password } = credentials
+			loginPage.login(email, password)
+		})
+
+		loginPage.validateSuccessLogin()
+	})
+})
+
+const usersCredentials = [
+	{ name: 'credentials', title: 'Login with credentials fixture', isSuccess: false },
+	{ name: 'users', title: 'Login with users fixture', isSuccess: true},
+]
+
+usersCredentials.forEach(credentials => {
+	describe.only(credentials.title, () => {
+		beforeEach(() => {
+			loginPage.visit()
+		})
+
+		it('Login', () => {
+			loginPage.validateLoginPage()
+			cy.fixture(credentials.name).then(credential => {
+				const { email, password } = credential
+				loginPage.login(email, password)
+
+				if(credentials.isSuccess)
+					loginPage.validateSuccessLogin()
+				else
+					loginPage.validateErrorLogin()
+			})
+		})
 	})
 })
