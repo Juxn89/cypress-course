@@ -1,6 +1,7 @@
 {
 	"recommendations": [
 		"andrew-codes.cypress-snippets",
-		"shevtsov.vscode-cy-helper"
+		"shevtsov.vscode-cy-helper",
+		"alexkrechik.cucumberautocomplete"
 	]
 }
