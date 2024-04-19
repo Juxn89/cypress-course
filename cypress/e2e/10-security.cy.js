@@ -17,7 +17,7 @@ describe('Security', () => {
 		cy.log(this.title)
 	})
 
-	it.only('Navigate between 2 domains in the same test', () => {
+	it('Navigate between 2 domains in the same test', () => {
 		cy.visit('/')
 		cy.get('h1').first().invoke('text').then((text) => {
 			label = text
@@ -36,5 +36,19 @@ describe('Security', () => {
 
 		cy.visit('/')
 		cy.get('h1').first().invoke('text').should('equal', Cypress.env('envLabel'))
+	})
+
+	it.only('Share information without using session, 1/2', () => {
+		cy.visit('/')
+		cy.get('h1').first().invoke('text').then( (text) => {
+			cy.task('saveValue', { label: text })
+		})
+	})
+
+	it.only('Share information without using session, 2/2', () => {
+		cy.visit('https://todo-cypress-iota.vercel.app/')
+		cy.task('getValue', 'label').then( value => {
+			cy.get('#title').type(value)
+		} )
 	})
 })
