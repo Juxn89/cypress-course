@@ -6,10 +6,21 @@ Given('I am on the login page', () => {
 	loginPage.validateLoginPage()
 })
 
-When('I fill in my email and password with {string} and {string}', (username, password) => {
-	loginPage.login(username, password)
-})
+// When('I fill in my email and password with {string} and {string}', (username, password) => {
+// 	loginPage.login(username, password)
+// })
 
 Then('I should validate that I am logged in', () => {
 	loginPage.validateSuccessLogin()
 })
+
+When(
+  /^I fill in my email and password with (.*) and (.*)$/,
+  function (username, password) {
+    loginPage.login(username, password);
+  }
+);
+
+Then(/^I should validate that I am not logged in$/, function () {
+  loginPage.validateErrorLogin();
+});

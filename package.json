@@ -4,6 +4,7 @@
   "description": "Curso de Automatización de Pruebas UI con Cypress Avanzado de Platzi",
   "main": "index.js",
   "scripts": {
+    "cucumber:tags": "cypress run --env tags=@testing",
     "eslint:fix": "eslint . --fix",
     "eslint": "eslint .",
     "test:headless:chrome:firstTest": "cypress run --browser chrome --spec cypress/e2e/01-firstTest.cy.js",

@@ -1,4 +1,5 @@
 Feature: Login
+	@Testing
 	Scenario: Login with valid credentials
 		Given I am on the login page
 		When I fill in my email and password with "username" and "password"
