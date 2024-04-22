@@ -1,4 +1,8 @@
+mochawesome.json
 /cypress/videos/*.mp4
+/cypress/results/
+/cypress/screenshots/
+/mochawesome-report/
 
 # Logs
 logs

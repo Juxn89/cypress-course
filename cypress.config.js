@@ -64,4 +64,8 @@ module.exports = defineConfig({
 		setupNodeEvents,
 		specPattern: '**/*.feature'
 	},
+	reporter: "cypress-multi-reporters",
+	reporterOptions: {
+		configFile: "reporter-config.json"
+	}
 })
