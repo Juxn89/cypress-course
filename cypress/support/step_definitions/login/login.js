@@ -1,5 +1,5 @@
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor')
-const { loginPage } = require('../../PageObjects/LoginPage') 
+const { loginPage } = require('../../../PageObjects/LoginPage') 
 
 Given('I am on the login page', () => {
 	loginPage.visit()
