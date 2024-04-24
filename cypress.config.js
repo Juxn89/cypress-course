@@ -2,7 +2,7 @@ const { defineConfig } = require('cypress')
 const webpack = require('@cypress/webpack-preprocessor')
 const preprocessor = require('@badeball/cypress-cucumber-preprocessor')
 const { addMatchImageSnapshotPlugin } = require('cypress-image-snapshot/plugin')
-const allureWritter = require('@shelex/cypress-allure-plugin')
+const allureWritter = require('@shelex/cypress-allure-plugin/writer')
 
 const values = {}
 

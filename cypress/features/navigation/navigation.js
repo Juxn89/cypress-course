@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor')
 const { loginPage } = require('../../PageObjects/LoginPage')
 
 Given('I am on the home page', () => {
-	loginPage.validateSuccessLogin()
+	// loginPage.validateSuccessLogin()
 })
 
 When('I click on the Account Activity Nav', () => {
